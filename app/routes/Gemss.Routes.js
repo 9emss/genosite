@@ -27,8 +27,8 @@ router.post('/', (req, res) => {
         host: 'smtp.zoho.com',
         port: 587,
         auth: {
-            user: 'gemsscode@zoho.com',
-            pass: 'N4$1Sambel'
+            user: USER,
+            pass: PASS
         }
     });
 
