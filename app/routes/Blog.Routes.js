@@ -1,31 +1,6 @@
 const router = require("express").Router();
 const Blog = require("../models/Blog.model");
 
-const blogs = [
-  {
-    title: "What is Lorem Ipsum?",
-    snippet:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    // author: "Gemss",
-    // createdAt: Date.now(),
-    // img: "placeholder.jpg",
-  },
-  {
-    title: "What is Lorem Ipsum?",
-    snippet:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    // author: "Gemss",
-    // createdAt: Date.now(),
-    // img: "placeholder.jpg",
-  },
-];
-
-router.get("/", (req, res) => {
-  res.locals.title = "Blog Pages";
-  res.locals.type = 2;
-  res.render("blog", { blog: blogs });
-});
-
 router.get("/new", (req, res) => {
   res.locals.title = "Add New Post";
   res.locals.type = 2;
@@ -37,6 +12,7 @@ router.post("/new", async (req, res) => {
 
   let blog = new Blog({
     title: req.body.title,
+    slug: req.body.slug,
     author: req.body.author,
     description: req.body.description,
   });
@@ -50,6 +26,43 @@ router.post("/new", async (req, res) => {
     console.log(e);
   }
 });
+
+router.get("/", async (req, res) => {
+  // let post = Blog.findAll();
+  res.locals.title = "Blog Pages";
+  res.locals.type = 2;
+
+  Blog.find({}, (err, blog) => {
+    if (err) return res.send(err);
+
+    res.render("blog", {
+      post: blog,
+    });
+  });
+});
+
+router.get("/:slug", (req, res) => {
+  res.locals.type = 2;
+  Blog.find({ slug: req.params.slug }, (err, data) => {
+    if (err) return res.send(err);
+
+    res.render("blog/show", {
+      post: data,
+    });
+  });
+});
+
+// router.get("/show", (req, res) => {
+//   res.locals.title = "Blog Pages";
+//   res.locals.type = 2;
+//   Blog.find({}, (err, blog) => {
+//     if (err) return res.send(err);
+
+//     res.render("blog/show", {
+//       post: blog,
+//     });
+//   });
+// });
 
 // router.get('/', (req, res) => {
 

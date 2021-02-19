@@ -1,0 +1,64 @@
+<%- include('../partials/detailheader') %>
+
+<div class="container" style="background-color: rgba(255, 255, 255, 0.89);">
+    <header class="gehead card">
+        <% post.forEach(masthed => { %>
+
+        <img src="/uploads/<%= masthed.img %> " class="card-img-top" style="height: 300px;" alt="...">
+
+        <% }) %>
+    </header>
+
+
+    <div class="card mb-3">
+        <!-- Loop Data -->
+
+        <% post.forEach(singel => { %>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><%= singel.title %> </h5>
+
+                <div class="mb-3 rapet d-flex align-items-end">
+
+                    <div class="flex-grow-1">
+
+                        <span class="card-text">
+                            <img src="/uploads/placeholder.png" class="rounded-circle z-depth-2 cirImage block1" alt="">
+                        </span>
+
+                        <div class="rapet block2">
+                            <span>
+                                <h6 class="card-text">
+                                    <b>
+                                        <small class="rapet">by <%= singel.author %>
+                                        </small>
+                                    </b>
+                                </h6>
+
+                                <small class="text-muted">at (
+                                    <%= singel.createdAt.toLocaleDateString() %> )</small>
+
+
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <p class="card-text"><%= singel.description %> </p>
+            </div>
+
+        </div>
+
+        <% }) %>
+
+
+    </div>
+</div>
+
+<%- include('../partials/footer-section') %> <%- include('../partials/footer')
+%>

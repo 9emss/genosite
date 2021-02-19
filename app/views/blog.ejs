@@ -1,47 +1,61 @@
 <%- include('./partials/header')  %>
 
-    <div class="container bgr">
+<div class="container bgr">
 
-        <header class="masthead">
+    <header class="masthead">
 
-        </header>
+    </header>
 
 
-        <div class="card mb-3">
-            <div class="titleimg card-body ">
-                <img class="col-5 overflow-hidden imgsize" src="assets/img/portfolio/codes.png" alt="Card image cap">
-                <div class="bcontent">
+    <div class="card mb-3">
 
-                    <h5 class="card-title">
-                        <b>
-                        <%= blog[0]['title'] %>
-                    </b>
-                    </h5>
-                    <p class="card-text paragraph">
-                        <%= blog[0]['snippet'] %>
-                    </p>
-                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                    <div class="d-flex align-items-end">
-                        <div class="mr-2">
-                            <img src="..." class="rounded-circle" style="width: 40px; height: 40px;">
-                        </div>
-                        <div class=" flex-grow-1">
-                            <h5 class="" style="font-size: 14px; line-height: 0.5rem;">
-                                <span><b>Gemss</b></span></h5>
-                            <p style="font-size: 8px; line-height: 0.2rem;">
-                                Last updated 3 mins ago
-                            </p>
-                        </div>
-                        <a href="#" class=" align-self-end">
-                            <i class='material-icons ml-3 text-black'>send</i>
-                        </a>
+        <!-- List -->
+
+        <% if (post.length == 0) { %>
+        <p class="card-text">Belum ada Post</p>
+        <% } %>
+
+
+        <% for( let i = 0; i < post.length; i++ ) { %>
+
+        <div class="titleimg card-body mb-4 mt-2">
+            <img class="col-5 overflow-hidden imgsize" src="/uploads/<%= post[i]['img'] %> " alt="Card image cap" />
+            <div class="bcontent">
+                <h5 class="card-title">
+                    <b> <%= post[i]['title'] %> </b>
+                </h5>
+                <p class="card-text paragraph"><%= post[i]['description'] %></p>
+                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                <div class="d-flex align-items-end">
+                    <div class="mr-2">
+                        <img src="..." class="rounded-circle" style="width: 40px; height: 40px" />
                     </div>
+                    <div class="flex-grow-1">
+                        <h5 class="" style="font-size: 14px; line-height: 0.5rem">
+                            <span><b> <%= post[i]['author'] %> </b></span>
+                        </h5>
+                        <p style="font-size: 8px; line-height: 0.2rem">
+                            Last updated 3 mins ago
+                        </p>
+                    </div>
+                    <a href="/blog/<%= post[i]['slug'] %> " class="align-self-end stretched-link">
+                        <i class="material-icons ml-3 text-black">More</i>
+                    </a>
+                    <a href="#" class="align-self-end">
+                        <i class="material-icons ml-3 text-black">send</i>
+                    </a>
                 </div>
             </div>
         </div>
 
+        <% } %>
+
+
+
     </div>
 
+</div>
 
-    <%- include('./partials/footer-section')  %>
-        <%- include('./partials/footer')  %>
+
+<%- include('./partials/footer-section')  %>
+<%- include('./partials/footer')  %>

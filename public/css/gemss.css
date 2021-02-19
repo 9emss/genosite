@@ -2,6 +2,10 @@
     background-color: rgba(39, 37, 37, 0.753);
 }
 
+.bawah {
+    padding: 10px;
+}
+
 .titleimg {
     border: 1px solid #ccc;
     display: flex;
@@ -33,3 +37,46 @@
 #more {
     display: none;
 }
+
+.block2 {
+    float: right;
+    margin-right: 106ex;
+}
+
+.gehead {
+    padding-top: 6rem;
+    padding-bottom: 10px;
+  }
+  .gehead .gehead-heading {
+    font-size: 2.75rem;
+    line-height: 2.75rem;
+  }
+  .gehead .gehead-subheading {
+    font-size: 1.25rem;
+  }
+  .gehead .gehead-avatar {
+    width: 15rem;
+  }
+  
+  @media (min-width: 992px) {
+    .gehead {
+      padding-top: 6rem;
+      padding-bottom: 10px;
+    }
+    .gehead .gehead-heading {
+      font-size: 4rem;
+      line-height: 3.5rem;
+    }
+    .gehead .gehead-subheading {
+      font-size: 1.5rem;
+    }
+  }
+
+  div.rapet {
+    line-height: 0.6;
+  }
+
+  .cirImage {
+      height: 30px;
+      width: 30px;
+  }

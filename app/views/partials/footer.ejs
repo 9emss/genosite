@@ -9,6 +9,25 @@
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
 <script src="/js/app.js"></script>
+
+<!-- CKEditor -->
+<script>
+    let editor;
+
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(newEditor => {
+            editor = newEditor
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    document.querySelector('#submit').addEventListener('click', () => {
+        const editorData = editor.editorData
+    })
+</script>
+
 </body>
 
 </html>

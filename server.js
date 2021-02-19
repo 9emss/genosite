@@ -19,18 +19,20 @@ const app = express();
 const MONGO = process.env.DB_CONNECT;
 
 mongoose.connect(
-    MONGO, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    },
-    console.log('Connected To DB!')
+  MONGO,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  console.log("Connected To DB!")
 );
 
 // Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-app.use(express.static('public'));
-app.use('/public', express.static('public'))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
+app.use("/public", express.static("public"));
 
 app.set("views", __dirname + "/app/views/");
 app.set("view engine", "ejs");
