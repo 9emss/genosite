@@ -1,0 +1,53 @@
+
+
+<%- include('../partials/header') %>  
+
+<div class="container bgr">
+
+    <header class="masthead">
+
+        <h1 class="mb-3 text-white">Add New Post</h1>
+
+    </header>
+
+    <div class="mb-2">
+
+        <form action="/blog/new" method="post">
+
+            <div class="form-group">
+    
+                <label for="title" class="text-white">Title</label>
+                <input type="text" class="form-control" placeholder="Title" name="title" required>
+    
+            </div>
+            <div class="form-group">
+    
+                <label for="author" class="text-white">Author</label>
+                <input type="text" class="form-control" placeholder="Author" name="author" required>
+    
+            </div>
+            <div class="form-group">
+    
+                <label for="description" class="text-white">Description</label>
+                <textarea name="description" class="form-control" placeholder="Desription..." required></textarea>
+    
+            </div>
+
+            <div class="form-group">
+
+                <a href="/blog" class="btn btn-warning">Cancel</a>
+                <button type="submit" class="btn btn-primary">Add Post</button>
+
+            </div>
+    
+        </form>
+
+    </div>
+    
+    
+
+
+</div>
+
+<%- include('../partials/footer-section')  %>
+<%- include('../partials/footer')  %>

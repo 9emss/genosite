@@ -1,3 +1,3 @@
 exports.run = (req, res) => {
-    res.render('pages/index');
+    res.render('index', { title: "My Portofolio", type: 1 });
 }

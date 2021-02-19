@@ -15,28 +15,28 @@ router.get('/', indexController.run);
 router.post('/', (req, res) => {
     console.log(req.body);
 
-    const transporter = nomail.createTransport({
-        service: 'gmail',
-        auth: {
-            user: USER,
-            pass: PASS
-        }
-    });
-
     // const transporter = nomail.createTransport({
-    //     host: 'smtp.ethereal.email',
-    //     port: 587,
+    //     service: 'gmail',
     //     auth: {
-    //         user: 'leonora.pollich96@ethereal.email',
-    //         pass: '258rhuC1Bv69THTNUe'
+    //         user: USER,
+    //         pass: PASS
     //     }
     // });
 
+    const transporter = nomail.createTransport({
+        host: 'smtp.zoho.com',
+        port: 587,
+        auth: {
+            user: 'gemsscode@zoho.com',
+            pass: 'N4$1Sambel'
+        }
+    });
+
 
     const mailOptions = {
-        from: 'Pesan Baru di Gemss Code 👥 <gemsscode@gmail.com>',
+        from: 'Pesan Baru di Gemss Code 👥 <gemsscode.noreply@zohomail.com>',
         replyTo: req.body.email,
-        to: 'gemsscode19@gmail.com',
+        to: 'gemsscode@zohomail.com',
         subject: `Message from ${req.body.email}:  ${req.body.subject}`,
         text: req.body.message
     }
